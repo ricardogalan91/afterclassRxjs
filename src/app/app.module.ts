@@ -12,6 +12,7 @@ import { ProductsRoutingModule } from './products/products-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MaterialModule } from './shared/materials.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes=[
   {path:'add-edit-product', component:ProductFormComponent},
@@ -35,7 +36,8 @@ const appRoutes=[
     BrowserAnimationsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
-    ProductsRoutingModule
+    ProductsRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

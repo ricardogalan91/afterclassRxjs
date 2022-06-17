@@ -1,20 +1,26 @@
 <form [formGroup]="vendedorForm" (ngSubmit)="onSubmit()">
     <div>
         <mat-form-field appearance="fill">
-            <mat-label>Vendedor</mat-label>
-            <input formControlName="nombreVendedor" matInput>
+            <mat-label>Nombre</mat-label>
+            <input formControlName="fname" matInput>
         </mat-form-field>
     </div>
     <div>
       <mat-form-field appearance="fill">
+          <mat-label>Apellido</mat-label>
+          <input formControlName="lname" matInput>
+      </mat-form-field>
+  </div>
+    <div>
+      <mat-form-field appearance="fill">
         <mat-label>Producto</mat-label>
-        <input formControlName="producto" matInput>
+        <input formControlName="product" matInput>
       </mat-form-field>
     </div>
     <div>
       <mat-form-field appearance="fill">
         <mat-label>Precio</mat-label>
-        <input formControlName="precioProducto" matInput>
+        <input formControlName="price" matInput>
       </mat-form-field>
     </div>
       <button type="submit">Submit</button>

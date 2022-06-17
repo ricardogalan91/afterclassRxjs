@@ -15,39 +15,24 @@ export class ProductFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.vendedorForm=this.fb.group({
-      nombreVendedor:['', Validators.required],
-      producto: ['', Validators.required],
-      precioProducto:['', Validators.required]
+      fname:['', Validators.required],
+      lname:['', Validators.required], 
+      product: ['', Validators.required],
+      price:['', Validators.required]
     })
     this.productsService.getProductToEdit().subscribe(
       val=>this.productToEdit=val
     )
     if(this.productToEdit){
-      this.vendedorForm.get('nombreVendedor')?.patchValue(this.productToEdit.nombreVendedor);
-      this.vendedorForm.get('producto')?.patchValue(this.productToEdit.producto);
-      this.vendedorForm.get('precioProducto')?.patchValue(this.productToEdit.precioProducto);
+      this.vendedorForm.get('fname')?.patchValue(this.productToEdit.fname);
+      this.vendedorForm.get('lname')?.patchValue(this.productToEdit.lname);
+      this.vendedorForm.get('product')?.patchValue(this.productToEdit.product);
+      this.vendedorForm.get('price')?.patchValue(this.productToEdit.price);
     }
   }
 
   onSubmit(){
-    let productos=[];
-    this.productsService.getProductsList().subscribe(
-      val=>productos=val
-    )
-    let index=1;
-    if(productos.length>0 && !this.productToEdit){
-      index=productos.length+1;
-      this.vendedorForm.value['id']=index;
-      productos.push(this.vendedorForm.value);
-    }else if(productos.length===0 && !this.productToEdit){
-      this.vendedorForm.value['id']=index;
-      productos.push(this.vendedorForm.value);
-    }
-    if(this.productToEdit){
-      let indexOfProduct=productos.findIndex((product)=>product.id===this.productToEdit.id);
-      productos[indexOfProduct]=this.vendedorForm.value;
-    }
-    this.productsService.productsList=productos!
+
     this.router.navigate(['/products/list']);
   }
 

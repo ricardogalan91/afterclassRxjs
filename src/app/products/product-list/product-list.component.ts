@@ -16,10 +16,6 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscriptions=new Subscription();
-    this.subscriptions.add(this.productsService.getProductsList().subscribe(
-      (val)=>this.productos=val
-    )
-    )
   }
 
   onClickRow(el:any){
