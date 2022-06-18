@@ -20,9 +20,7 @@ export class ProductFormComponent implements OnInit {
       product: ['', Validators.required],
       price:['', Validators.required]
     })
-    this.productsService.getProductToEdit().subscribe(
-      val=>this.productToEdit=val
-    )
+    this.productToEdit=this.productsService.productToEdit;
     if(this.productToEdit){
       this.vendedorForm.get('fname')?.patchValue(this.productToEdit.fname);
       this.vendedorForm.get('lname')?.patchValue(this.productToEdit.lname);
@@ -32,8 +30,28 @@ export class ProductFormComponent implements OnInit {
   }
 
   onSubmit(){
+    const product= this.vendedorForm.value;
+    if(!this.productToEdit){
+      this.productsService.postProduct(product).subscribe(
+        (val)=>{
+          console.log(val);
+          this.router.navigate(['/products/list']);
+        }
+      );
+    }else{
+      product['id']=this.productToEdit.id;
+      this.productsService.updateProduct(product).subscribe(
+        (val)=>{
+          this.productsService.productToEdit=null;
+          this.router.navigate(['/products/list']);
+        }
+      )
+    }
+  }
 
-    this.router.navigate(['/products/list']);
+  onNavigateBack(){
+    this.productsService.productToEdit=null;
+    this.router.navigate(['/products/list'])
   }
 
 }

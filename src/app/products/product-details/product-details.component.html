@@ -1,1 +1,14 @@
-<p>product-details works!</p>
+<div *ngIf="productToShow">
+    <p>
+        Vendors Name:
+        {{productToShow.fname}} {{productToShow.lname}}
+    </p>
+    <p>
+        Vendor's age
+        {{productToShow.age}}
+    </p>
+    <p>
+        Product:
+        {{productToShow.product}} {{productToShow.price}}
+    </p>
+</div>
