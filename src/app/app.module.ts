@@ -13,6 +13,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { MaterialModule } from './shared/materials.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
 
 const appRoutes=[
   {path:'add-edit-product', component:ProductFormComponent},
@@ -37,7 +38,8 @@ const appRoutes=[
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     ProductsRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({}, {})
   ],
   providers: [],
   bootstrap: [AppComponent]
