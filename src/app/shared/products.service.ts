@@ -9,7 +9,7 @@ import { Vendor } from '../vendor';
 export class ProductsService {
   productsList:any=[];
   productToEdit:any;
-  url= 'https://62aca25c402135c7acb5e786.mockapi.io/api/v1/vendors'
+  url= 'https://62b8883603c36cb9b7c894c3.mockapi.io/api/v1/products';
   constructor(private http:HttpClient) { }
 
  getProductsList():Observable<Vendor[]>{
